@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suresh Kommuri's - Interactive Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="btn-primary btn-new-chat" onclick="startNewChat()">
+                    <i class="fas fa-plus"></i>
+                    <span>New chat</span>
+                </button>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-search">
+                    <i class="fas fa-search"></i>
+                    <input id="searchChatsInput" type="text" placeholder="Search chats" />
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Chats</div>
+                <div id="chatsList" class="sidebar-list"></div>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Library</div>
+                <div id="libraryList" class="sidebar-list"></div>
+            </div>
+        </aside>
+        <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="profile-info">
+                    <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                    <div class="profile-details">
+                        <h1>Suresh Kommuri</h1>
+                        <p>Interactive Resume & Portfolio</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="clearChat()"><i class="fas fa-trash"></i> Clear Chat</button>
+                    <button class="btn-primary" onclick="downloadResume()"><i class="fas fa-download"></i> Download Resume</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <main class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome Message Row -->
+                <div class="chat-row alt">
+                    <div class="message assistant-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                <p>👋 Welcome to Suresh’s interactive resume. I’m here to assist you in navigating his professional experience, skill sets, and notable achievements.</p>
+                                <p>Try asking me about:</p>
+                                <ul>
+                                    <li>His work experience and current role</li>
+                                    <li>Technical skills and technologies</li>
+                                    <li>Education and certifications</li>
+                                    <li>Notable projects and achievements</li>
+                                    <li>Contact information and availability</li>
+                                </ul>
+                                <p>What would you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message assistant-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask me anything about Suresh's background, experience, or skills..."
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    <button id="sendButton" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="char-count" id="charCount">0/1000</span>
+                    <span class="input-hint">Press Enter to send, Shift+Enter for new line</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="quick-action-btn" onclick="askQuestion('Tell me about your work experience')">
+                <i class="fas fa-briefcase"></i>
+                Work Experience
+            </button>
+            <button class="quick-action-btn" onclick="askQuestion('What are your technical skills?')">
+                <i class="fas fa-code"></i>
+                Technical Skills
+            </button>
+            <button class="quick-action-btn" onclick="askQuestion('Show me your projects')">
+                <i class="fas fa-project-diagram"></i>
+                Projects
+            </button>
+            <button class="quick-action-btn" onclick="askQuestion('What is your education background?')">
+                <i class="fas fa-graduation-cap"></i>
+                Education
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
